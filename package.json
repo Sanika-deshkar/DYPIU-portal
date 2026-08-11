@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker build -t dypiu-portal:latest .",
+    "docker:run": "docker run -d -p 80:80 --name dypiu-portal dypiu-portal:latest"
   },
   "dependencies": {
     "lucide-react": "^1.31.0",

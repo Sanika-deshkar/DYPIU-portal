@@ -5,13 +5,13 @@ const portals = [
   {
     title: 'Faculty Appraisal Portal',
     description: 'Access the Faculty Performance Based Appraisal System.',
-    href: 'https://pbas.dypiu.ac.in/login',
+    href: import.meta.env.VITE_FACULTY_PORTAL_URL || 'https://pbas.dypiu.ac.in/login',
     icon: User,
   },
   {
     title: 'School Appraisal Portal',
     description: 'Access the School Performance Based Appraisal System.',
-    href: 'https://pbas.dypiu.ac.in/AAA/login',
+    href: import.meta.env.VITE_SCHOOL_PORTAL_URL || 'https://pbas.dypiu.ac.in/AAA/login',
     icon: Landmark,
   },
 ]
