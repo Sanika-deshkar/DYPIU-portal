@@ -1,0 +1,73 @@
+name: Build and Deploy DYPIU Portal
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-and-test:
+    name: Lint & Build Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  # Optional SSH Deployment Step for Linux VM
+  # To enable, add VM_HOST, VM_USERNAME, and VM_SSH_KEY to your GitHub Repository Secrets
+  deploy-to-vm:
+    name: Deploy to Linux VM
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Deploy static files to VM via SSH
+        uses: appleboy/scp-action@v0.1.7
+        if: env.VM_HOST != ''
+        env:
+          VM_HOST: ${{ secrets.VM_HOST }}
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          port: ${{ secrets.VM_PORT || 22 }}
+          source: "dist/*"
+          target: "/var/www/dypiu-portal"
+          strip_components: 1

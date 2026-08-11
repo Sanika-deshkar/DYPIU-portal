@@ -150,6 +150,9 @@
   .iqac-logo {
     height: 64px;
   }
+  .content h1 {
+    white-space: normal;
+  }
   .card {
     width: 100%;
   }
