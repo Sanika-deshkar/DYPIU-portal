@@ -1,4 +1,4 @@
-import { User, Landmark, ArrowRight } from 'lucide-react'
+import { User, Landmark, GraduationCap, ArrowRight } from 'lucide-react'
 import './Landing.css'
 
 const portals = [
@@ -9,10 +9,16 @@ const portals = [
     icon: User,
   },
   {
-    title: 'School Appraisal Portal',
-    description: 'Access the School Performance Based Appraisal System.',
+    title: 'Academic and Administrative Audit Portal',
+    description: 'Access the Academic and administrative Audit System.',
     href: import.meta.env.VITE_SCHOOL_PORTAL_URL || 'https://pbas.dypiu.ac.in/AAA/login',
     icon: Landmark,
+  },
+  {
+    title: 'OBE Portal',
+    description: 'Access the Outcome Based Education System.',
+    href: import.meta.env.VITE_OBE_PORTAL_URL || 'https://pbas.dypiu.ac.in/obe',
+    icon: GraduationCap,
   },
 ]
 

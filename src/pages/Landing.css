@@ -77,10 +77,12 @@
 
 .cards {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 20px;
   justify-content: center;
-  max-width: 900px;
+  max-width: 980px;
+  width: 100%;
 }
 
 .card {
@@ -88,8 +90,9 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 14px;
   backdrop-filter: blur(6px);
-  padding: 28px 24px 22px;
-  width: 280px;
+  padding: 28px 20px 22px;
+  width: 300px;
+  flex: 0 1 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,8 +113,12 @@
 
 .card h2 {
   font-size: 22px;
+  line-height: 1.25;
   color: #fff;
   margin: 0 0 10px;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
 }
 
 .card p {
@@ -119,6 +126,7 @@
   line-height: 145%;
   color: rgba(255, 255, 255, 0.75);
   margin: 0 0 24px;
+  min-height: 2.9em;
 }
 
 .card-btn {
@@ -153,7 +161,11 @@
   .content h1 {
     white-space: normal;
   }
+  .cards {
+    flex-wrap: wrap;
+  }
   .card {
     width: 100%;
+    flex: 1 1 100%;
   }
 }
