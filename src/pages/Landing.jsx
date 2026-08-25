@@ -1,7 +1,13 @@
-import { User, Landmark, GraduationCap, ArrowRight } from 'lucide-react'
+import { UserCog, User, Landmark, GraduationCap, ArrowRight } from 'lucide-react'
 import './Landing.css'
 
 const portals = [
+  {
+    title: 'Admin - Faculty Appraisal Portal',
+    description: 'Access the Faculty Performance Based Appraisal System admin panel.',
+    href: import.meta.env.VITE_FACULTY_ADMIN_PORTAL_URL || 'https://pbas.dypiu.ac.in/panel/',
+    icon: UserCog,
+  },
   {
     title: 'Faculty Appraisal Portal',
     description: 'Access the Faculty Performance Based Appraisal System.',
