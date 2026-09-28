@@ -23,7 +23,7 @@ const portals = [
   {
     title: 'OBE Portal',
     description: 'Access the Outcome Based Education System.',
-    href: import.meta.env.VITE_OBE_PORTAL_URL || 'https://pbas.dypiu.ac.in/nba/login',
+    href: import.meta.env.VITE_OBE_PORTAL_URL || 'https://pbas.dypiu.ac.in/obe/login',
     icon: GraduationCap,
   },
 ]
